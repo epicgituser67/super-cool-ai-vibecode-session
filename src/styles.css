@@ -8,6 +8,7 @@
   --violet: #6a3ff5;
   --panel: rgba(18, 12, 36, 0.94);
   --edge: rgba(140, 110, 255, 0.45);
+  --display: "Bungee", "Arial Black", "Impact", "Haettenschweiler", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -17,7 +18,8 @@ html, body {
   height: 100%;
   background: radial-gradient(circle at 50% 0%, #1a1036 0%, var(--bg) 60%, #05030c 100%);
   color: var(--ink);
-  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  font-family: "Barlow", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
   overflow: hidden;
 }
 
@@ -72,6 +74,7 @@ canvas {
 
 .hud-label {
   font-size: 0.68em;
+  font-weight: 600;
   letter-spacing: 0.18em;
   color: var(--dim);
 }
@@ -175,9 +178,11 @@ canvas {
 .panel.wide { width: min(760px, 96%); text-align: left; }
 
 h1 {
+  font-family: var(--display);
+  font-weight: 400;
   margin: 0 0 4px;
-  font-size: clamp(30px, 6vw, 54px);
-  letter-spacing: 3px;
+  font-size: clamp(28px, 5.4vw, 50px);
+  letter-spacing: 2px;
   background: linear-gradient(90deg, var(--gem), #fff, var(--pink));
   -webkit-background-clip: text;
   background-clip: text;
@@ -185,8 +190,15 @@ h1 {
 }
 
 h1 .spark { text-shadow: none; }
-h2 { margin: 0 0 10px; letter-spacing: 3px; font-size: clamp(20px, 3.6vw, 30px); }
-h3 { letter-spacing: 2px; }
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  margin: 0 0 10px;
+  letter-spacing: 1px;
+  font-size: clamp(18px, 3.2vw, 27px);
+}
+
+h3 { font-family: var(--display); font-weight: 400; letter-spacing: 1px; }
 
 .tagline { color: var(--dim); font-style: italic; margin: 0 0 14px; }
 .blurb { color: #cfc4f0; line-height: 1.5; font-size: 0.95em; }
@@ -334,6 +346,7 @@ h3 { letter-spacing: 2px; }
 }
 
 .ad-tag {
+  font-family: var(--display);
   background: var(--pink);
   color: #250016;
   font-weight: bold;
@@ -363,3 +376,17 @@ h3 { letter-spacing: 2px; }
 }
 
 #footer code { color: var(--dim); }
+
+/* ---------------- a11y ---------------- */
+.btn:focus-visible,
+.card button:focus-visible,
+#ad-close:focus-visible {
+  outline: 2px solid var(--gem);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+  .btn { transition: none; }
+  #combo-bar { transition: none; }
+}

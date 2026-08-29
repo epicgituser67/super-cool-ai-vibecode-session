@@ -733,7 +733,7 @@
     ctx.shadowBlur = 0;
     ctx.rotate(-u.spin * 0.5);
     ctx.fillStyle = c;
-    ctx.font = 'bold 14px "Trebuchet MS", sans-serif';
+    ctx.font = 'bold 14px "Barlow", "Trebuchet MS", sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(label[u.type], 0, 1);
@@ -751,7 +751,7 @@
       ctx.arc(0, 0, 8 + (1 - k) * 24, 0, Math.PI * 2);
       ctx.stroke();
       ctx.fillStyle = 'rgba(242, 201, 76, 0.9)';
-      ctx.font = 'bold 13px "Trebuchet MS", sans-serif';
+      ctx.font = 'bold 13px "Barlow", "Trebuchet MS", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('!', 0, 5);
       ctx.restore();
@@ -769,7 +769,7 @@
 
   function drawFloaters(g) {
     ctx.textAlign = 'center';
-    ctx.font = 'bold 16px "Trebuchet MS", sans-serif';
+    ctx.font = 'bold 16px "Barlow", "Trebuchet MS", sans-serif';
     g.floaters.forEach(function (o) {
       ctx.globalAlpha = clamp(o.life / 0.9, 0, 1);
       ctx.fillStyle = o.color;

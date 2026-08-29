@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIAMOND ROLL — Never Gonna Give You Up</title>
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+
+<div id="shell">
+  <div id="stage">
+    <canvas id="game" width="960" height="600"></canvas>
+
+    <!-- ================= HUD ================= -->
+    <div id="hud" class="hidden">
+      <div class="hud-row">
+        <div class="hud-block">
+          <span class="hud-label">SCORE</span>
+          <span id="hud-score" class="hud-value">0</span>
+        </div>
+        <div class="hud-block">
+          <span class="hud-label">DIAMONDS</span>
+          <span id="hud-diamonds" class="hud-value gem">0</span>
+        </div>
+        <div class="hud-block">
+          <span class="hud-label">WAVE</span>
+          <span id="hud-wave" class="hud-value">1</span>
+        </div>
+        <div class="hud-block hud-right">
+          <span id="hud-hearts" class="hud-hearts"></span>
+        </div>
+      </div>
+      <div id="combo-wrap">
+        <div id="combo-bar"></div>
+        <span id="combo-text"></span>
+      </div>
+      <div id="dash-wrap" title="Dash (Space)">
+        <div id="dash-bar"></div>
+      </div>
+      <div id="toast-layer"></div>
+    </div>
+
+    <!-- ================= TITLE ================= -->
+    <div id="screen-title" class="screen">
+      <div class="panel">
+        <h1>DIAMOND<span class="spark">ROLL</span></h1>
+        <p class="tagline">You're no stranger to loot. You know the rules, and so do I.</p>
+        <div class="how">
+          <div><b>WASD</b> / <b>Arrows</b> — move</div>
+          <div><b>Space</b> — dash (brief invincibility)</div>
+          <div><b>P</b> — pause &nbsp;·&nbsp; <b>M</b> — mute</div>
+        </div>
+        <p class="blurb">
+          Collect diamonds. Dodge <b>duckrolls</b>. The <b class="gold">golden diamond</b> is
+          never gonna give you up &mdash; it runs. Chain pickups for combo multipliers.
+        </p>
+        <div class="btn-row">
+          <button id="btn-play" class="btn btn-primary">PLAY</button>
+          <button id="btn-shop" class="btn">STORE</button>
+        </div>
+        <div class="stats-line">
+          Best: <b id="title-best">0</b> &nbsp;·&nbsp; Bank: <b id="title-bank" class="gem">0</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PAUSE ================= -->
+    <div id="screen-pause" class="screen hidden">
+      <div class="panel narrow">
+        <h2>PAUSED</h2>
+        <p class="blurb">Never gonna stop, drop and desert you.</p>
+        <div class="btn-row">
+          <button id="btn-resume" class="btn btn-primary">RESUME</button>
+          <button id="btn-quit" class="btn">GIVE UP</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= GAME OVER ================= -->
+    <div id="screen-over" class="screen hidden">
+      <div class="panel">
+        <h2>YOU GOT ROLLED</h2>
+        <div class="score-grid">
+          <div><span class="hud-label">SCORE</span><b id="over-score">0</b></div>
+          <div><span class="hud-label">BEST</span><b id="over-best">0</b></div>
+          <div><span class="hud-label">EARNED</span><b id="over-earned" class="gem">0</b></div>
+        </div>
+        <p id="over-quip" class="blurb"></p>
+        <div class="btn-row">
+          <button id="btn-again" class="btn btn-primary">AGAIN</button>
+          <button id="btn-shop2" class="btn">STORE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= STORE ================= -->
+    <div id="screen-shop" class="screen hidden">
+      <div class="panel wide">
+        <div class="shop-head">
+          <h2>THE STORE</h2>
+          <div class="wallet">BANK: <b id="shop-bank" class="gem">0</b></div>
+        </div>
+
+        <div class="shop-note">
+          Everything here is bought with diamonds you actually earned by playing.
+          No real money is accepted anywhere in this game, ever.
+        </div>
+
+        <div id="shop-items" class="shop-grid"></div>
+
+        <h3 class="fake-head">PREMIUM DIAMOND BUNDLES <span class="fake-tag">definitely real</span></h3>
+        <div id="shop-fake" class="shop-grid"></div>
+
+        <div class="btn-row">
+          <button id="btn-shop-back" class="btn btn-primary">BACK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= FAKE AD ================= -->
+    <div id="adbar" class="hidden">
+      <span class="ad-tag">AD</span>
+      <span id="ad-copy">Local duck discovers ONE WEIRD TRICK for wheels. Mechanics hate it!</span>
+      <button id="ad-close" title="close">&times;</button>
+    </div>
+
+    <!-- ================= MODAL ================= -->
+    <div id="modal" class="screen hidden">
+      <div class="panel narrow">
+        <h3 id="modal-title"></h3>
+        <p id="modal-body" class="blurb"></p>
+        <div class="btn-row">
+          <button id="modal-ok" class="btn btn-primary">FINE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p id="footer">
+    Built on <code>docs/IMPORTANT.md</code>. Bait, switch, and diamonds.
+  </p>
+</div>
+
+<script src="src/audio.js"></script>
+<script src="src/shop.js"></script>
+<script src="src/game.js"></script>
+</body>
+</html>
